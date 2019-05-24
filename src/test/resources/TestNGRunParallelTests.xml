@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Run Test Cukes" parallel="tests" verbose="1"
+	configfailurepolicy="continue" thread-count="2">
+
+	<listeners>
+		<!-- This TestNG listener takes care of setting up and tearing down the 
+			WebDriver, and it also changes test names in the final TestNG HTML report. -->
+		<listener class-name="com.inmarsat.sfdc.framework.WebDriverListener" />
+	</listeners>
+
+	<!-- Possible Parameters and Values -->
+	<!-- ExecutionMode = API,LOCAL,GRID,MOBILE,PERFECTO,SEETEST,FASTEST,SAUCELABS,TESTOBJECT -->
+	<!-- ToolName= APPIUM,REMOTEDRIVER -->
+	<!-- MobileExecutionPlatform = ANDROID, IOS, WEB_ANDROID, WEB_IOS -->
+	<!-- BrowserName = CHROME,FIREFOX,INTERNET_EXPLORER,EDGE -->
+	<!-- DeviceName = "Please give the respective deviceName/UDID" OR ManufacturerName 
+		= Apple etc., ModelName = iPhone 7etc., -->
+	<!-- MobileOsVersion ="" -->
+	<!-- BrowserVersion ="" (Applicable Only if ExecutionMode is GRID or SAUCELABS 
+		or Fastest Desktop) -->
+	<!-- Platform =WINDOWS etc., (Applicable Only if ExecutionMode is GRID or 
+		SAUCELABS or Fastest Desktop) -->
+
+	<test name="Regression Tests">
+		<parameter name="ExecutionMode" value="LOCAL" />
+		<parameter name="BrowserName" value="CHROME" />
+		<classes>
+			<class name="com.inmarsat.sfdc.runners.RunCucumberTests_Regression" />
+		</classes>
+	</test>
+
+	<test name="Smoke Tests">
+		<parameter name="ExecutionMode" value="LOCAL" />
+		<parameter name="BrowserName" value="CHROME" />
+		<classes>
+			<class name="com.inmarsat.sfdc.runners.RunCucumberTests_Smoke" />
+		</classes>
+	</test>
+
+</suite>
